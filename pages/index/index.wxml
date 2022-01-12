@@ -1,0 +1,22 @@
+<text style="position:relative;">1.请输入WIFI名称（2.4G）：</text>
+<input id="input_wifi_name"  value="{{wifi_name}}"  bindinput="input_wifi_name_callback"  class="input"  placeholder="请输入WIFI名称（2.4G）" />
+<text style="position:relative;">2.请输入WIFI密码：</text>
+<input bindinput="input_wifi_pass_callback"  class="input"  placeholder="请输入WIFI密码" />
+<text style="position:relative;">3.请输入电脑端IP地址(IPv4)：</text>
+<input bindinput="input_ip_callback"  class="input"  maxlength="15" type="digit" placeholder="255.255.255.255" />
+<text style="position:relative;">4.请输入端口号：</text>
+<input bindinput="input_port_callback"  value="{{port}}"  class="input"   type="number" placeholder="8085" />
+<text style="position:relative;">5.请手动连接至wifi“helloworld”</text>
+<text style="position:relative;">
+注意：
+*连接的wifi请确保为2.4Gwifi
+*电脑的IP地址必须为IPv4
+*在点击按钮前请确保连接至wifi"helloworld"
+*您可能需要在电脑的防火墙中开放本页面设置的端口号
+</text>
+<button bindtap="button_config_callback">配网</button>
+
+
+
+
+
