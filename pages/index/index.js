@@ -5,7 +5,7 @@ const app = getApp()
 Page({
   data: {
     motto: 'Hello World',
-    wifi_name: '',
+    wifi_ssid: '',
     wifi_pass: '',
     wifi_riss: '',
     ip:'',
@@ -18,9 +18,9 @@ Page({
   },
 
   onLoad() {
-    this.setData({
-      port:8848
-    })
+    // this.setData({
+    //   port:8848
+    // })
     wx.startWifi({
       success(res) {
         console.log(res.errMsg, 'wifi初始化成功');
@@ -33,7 +33,7 @@ Page({
       success: (e) => {
         console.log(e.wifi, 'wifi获取成功');
         this.setData({
-          wifi_name:e.wifi.SSID
+          wifi_ssid:e.wifi.SSID
         })
       },
       fail: (e) => {
@@ -42,11 +42,11 @@ Page({
     })
   },
 
-  input_wifi_name_callback(e) {
+  input_wifi_ssid_callback(e) {
     this.setData({
-      wifi_name:e.detail.value
+      wifi_ssid:e.detail.value
     })
-    console.log(this.data.wifi_name);
+    console.log(this.data.wifi_ssid);
   },
 
   input_wifi_pass_callback(e) {
@@ -72,13 +72,13 @@ Page({
 
   button_config_callback(e) {
     var ok_flag = false;
-    console.log("wifi_name:",this.data.wifi_name);
+    console.log("wifi_ssid:",this.data.wifi_ssid);
     console.log("wifi_pass:",this.data.wifi_pass);
     console.log("ip address:",this.data.ip);
     console.log("port:",this.data.port);
 
     /* 检查是否为空 */
-    if ((this.data.wifi_name == "") || (this.data.wifi_pass == "") || (this.data.ip == "") || (this.data.port == "")) {
+    if ((this.data.wifi_ssid == "") || (this.data.wifi_pass == "") || (this.data.ip == "") || (this.data.port == "")) {
       console.error("信息为空！！！");
       wx.showToast({
         title: '信息输入错误，请检查！',
@@ -100,7 +100,7 @@ Page({
     wx.getConnectedWifi({
       success: (e) => {
         console.log(e.wifi, 'wifi获取成功');
-        if (e.wifi.SSID != "helloworld") {
+        if (e.wifi.SSID != "PCMonitor") {
           wx.showToast({
             title: '请连接至正确wifi',
             icon:'none'
@@ -126,7 +126,7 @@ Page({
   network_config (e) {
 
     var buffer = {
-      'wifi_name' : this.data.wifi_name,
+      'wifi_ssid' : this.data.wifi_ssid,
       'wifi_pass' : this.data.wifi_pass,
       'ip_address' : this.data.ip,
       'port' : this.data.port
@@ -160,7 +160,7 @@ Page({
       success: (e) => {
         console.log(e.wifi, 'wifi获取成功')
         this.setData({
-           wifi_name: e.wifi.SSID,
+           wifi_ssid: e.wifi.SSID,
            wifi_pass: e.wifi.BSSID,
            wifi_riss: e.wifi.signalStrength
         })
