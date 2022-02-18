@@ -81,8 +81,10 @@ Page({
     if ((this.data.wifi_ssid == "") || (this.data.wifi_pass == "") || (this.data.ip == "") || (this.data.port == "")) {
       console.error("信息为空！！！");
       wx.showToast({
-        title: '信息输入错误，请检查！',
-        icon:'none'
+        title: '信息错误',
+        icon:'error',
+        duration:2500,
+        mask:'true'
       })
       return;
     }
@@ -102,17 +104,21 @@ Page({
         console.log(e.wifi, 'wifi获取成功');
         if (e.wifi.SSID != "PCMonitor") {
           wx.showToast({
-            title: '请连接至正确wifi',
-            icon:'none'
+            title: '请连接正确wifi',
+            icon:'error',
+            duration:2500,
+            mask:'true'
           })
           return;
         }
         else {
-          wx.showToast({
-            title: '正在配网',
-            icon:'success',
-          })
           this.network_config();
+          wx.showToast({
+            title: '正在发送...',
+            icon:'success',
+            duration:5000,
+            mask:'true'
+          })
         }
       },
       fail: (e) => {
