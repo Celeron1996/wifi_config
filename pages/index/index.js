@@ -10,6 +10,8 @@ Page({
     wifi_riss: '',
     ip:'',
     port:'',
+    private_key:'',
+    city:'',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -70,6 +72,20 @@ Page({
     console.log(this.data.port);
   },
 
+  input_private_key_callback(e) {
+    this.setData({
+      private_key:e.detail.value
+    })
+    console.log(this.data.private_key);
+  },  
+
+  input_city_callback(e) {
+    this.setData({
+      city:e.detail.value
+    })
+    console.log(this.data.city);
+  },    
+
   button_config_callback(e) {
     var ok_flag = false;
     console.log("wifi_ssid:",this.data.wifi_ssid);
@@ -78,7 +94,7 @@ Page({
     console.log("port:",this.data.port);
 
     /* 检查是否为空 */
-    if ((this.data.wifi_ssid == "") || (this.data.wifi_pass == "") || (this.data.ip == "") || (this.data.port == "")) {
+    if ((this.data.wifi_ssid == "") || (this.data.wifi_pass == "") || (this.data.ip == "") || (this.data.port == "") || (this.data.private_key == "") || (this.data.city == "")) {
       console.error("信息为空！！！");
       wx.showToast({
         title: '信息错误',
@@ -135,7 +151,9 @@ Page({
       'wifi_ssid' : this.data.wifi_ssid,
       'wifi_pass' : this.data.wifi_pass,
       'ip_address' : this.data.ip,
-      'port' : this.data.port
+      'port' : this.data.port,
+      'private_key' : this.data.private_key,
+      'city' : this.data.city
     }
     var str = JSON.stringify(buffer)
 

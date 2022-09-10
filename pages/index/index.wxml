@@ -6,7 +6,11 @@
 <input bindinput="input_ip_callback"  class="input"  maxlength="15" type="digit" />
 <text style="position:relative;">step4：输入电脑端的端口号：</text>
 <input bindinput="input_port_callback"  value="{{port}}"  class="input"   type="number" />
-<text style="position:relative;">step5：将手机连接至 WIFI “PCMonitor”</text>
+<text style="position:relative;">step5：输入心知天气平台的免费版私人密钥：</text>
+<input bindinput="input_private_key_callback"  class="input"/>
+<text style="position:relative;">step6：输入你所在城市的拼音：（如：北京，则输入：beijing）</text>
+<input bindinput="input_city_callback"  class="input"/>
+<text style="position:relative;">step7：将手机连接至 WIFI “PCMonitor”</text>
 <text style="position:relative;" user-select="true">
 /****************************************/
 注意：
@@ -15,6 +19,8 @@
 *电脑的端口号可在软件中查看，注意防火墙要开放此端口号
 *在点击按钮前请确保连接至wifi"PCMonitor"
 *您可能需要在电脑的防火墙中开放本页面设置的端口号
+*关于step5：请前往 https://www.seniverse.com/ 注册并开通个人免费版私人密钥
+并将免费版的私人密钥复制至此处，结合step6的城市信息，将用于获取网络天气信息
 /***************************************/
 </text>
 <button bindtap="button_config_callback">确认</button>
